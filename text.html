@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Something Special 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(to right, #ffe6f0, #fff0f5);
+      color: #c71585;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .screen {
+      display: none;
+      padding: 100px 20px;
+      min-height: 100vh;
+    }
+    .active {
+      display: block;
+    }
+
+    /* Screen 1 - Balloon */
+    #balloon {
+      font-size: 100px;
+      cursor: pointer;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Screen 2 - Quotes */
+    .quote {
+      font-size: 1.6em;
+      margin: 40px auto;
+      max-width: 600px;
+    }
+
+    .next-btn {
+      margin-top: 40px;
+      padding: 10px 30px;
+      font-size: 1em;
+      border-radius: 25px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Screen 3 - Final */
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .question {
+      font-size: 1.7em;
+      margin: 40px 0;
+      color: #8b005d;
+    }
+
+    .btn {
+      font-size: 1.2em;
+      padding: 12px 30px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .yes {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    .no {
+      background-color: #ffffff;
+      color: #ff1493;
+      border: 2px solid #ff1493;
+      position: absolute;
+    }
+
+    .flowers {
+      font-size: 24px;
+      margin-top: 10px;
+      letter-spacing: 5px;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 0.9em;
+      color: #b03060;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen 1: Balloon -->
+  <div id="screen1" class="screen active">
+    <h2>Something magical is floating toward you... 🎈</h2>
+    <div id="balloon" onclick="showScreen(2)">🎈</div>
+    <p>(Tap the balloon to pop it!)</p>
+  </div>
+
+  <!-- Screen 2: Beauty Quote -->
+  <div id="screen2" class="screen">
+    <h2>Just wanted to say...</h2>
+    <div class="quote">"Your presence feels like spring after a long winter — soft, soothing, and beautiful." 🤍</div>
+    <div class="quote">"In a world full of noise, your smile is my favorite silence." 🌼</div>
+    <div class="quote">"You don’t just look beautiful — you radiate it." 🤍🌼</div>
+    <button class="next-btn" onclick="showScreen(3)">Next 🌸</button>
+  </div>
+
+  <!-- Screen 3: Date Invitation -->
+  <div id="screen3" class="screen">
+    <h1>🌸 "Tere sang bitaye pal kuch khaas ban gaye..." 🌸</h1>
+
+    <div class="flowers">🤍🌼🤍🌼🤍🌼🤍🌼🤍🌼🤍🌼🤍</div>
+
+    <div class="question">
+      Would you like to go on a sweet little date with me? 💗
+    </div>
+
+    <button class="btn yes" onclick="alert('Yay! I knew you’d say yes! 😍')">Yes 🤍</button>
+    <button class="btn no" id="noBtn">No 🙈</button>
+
+    <div class="flowers">🤍🌼🤍🌼🤍🌼🤍🌼🤍🌼🤍🌼🤍</div>
+
+    <footer>Made just for you 💫</footer>
+  </div>
+
+  <script>
+    function showScreen(n) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen' + n).classList.add('active');
+    }
+
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+    });
+  </script>
+
+</body>
+</html>
